@@ -1,0 +1,89 @@
+import webbrowser
+from tkinter import *
+
+top = Tk()
+top.title("Map Generator")
+top.geometry("500x425")
+top.configure(background='gray')
+
+prompt0 = Label(top, text="Map Generator -                                 ", font=("Times New Roman", 16), bg="gray")
+prompt0.grid(row=6, column=6)
+
+prompt1 = Label(top, text="Please enter city:                                 ", font=("Times New Roman", 16),     bg="gray")
+prompt1.grid(row=12, column=6)
+
+E1 = Entry(top)
+E1.grid(row=12, column=12)
+
+prompt2 = Label(top, text="Please enter country/state:                  ", font=("Times New Roman", 16), bg="gray")
+prompt2.grid(row=18, column=6)
+
+E2 = Entry(top)
+E2.grid(row=18, column=12)
+
+prompt3 = Label(top, text="Please enter zoom level:                     ", font=("Times New Roman", 16), bg="gray")
+prompt3.grid(row=24, column=6)
+
+E3 = Entry(top)
+E3.grid(row=24, column=12)
+
+prompt4 = Label(top, text="Please enter color of icon:                  ", font=("Times New Roman", 16), bg="gray")
+prompt4.grid(row=30, column=6)
+
+E4 = Entry(top)
+E4.grid(row=30, column=12)
+
+prompt01 = Label(top, text="Example:                                              ", font=("Times New Roman", 16),
+                 bg="gray")
+prompt01.grid(row=42, column=6)
+
+prompt02 = Label(top, text="City-(New York)                                 ", font=("Times New Roman", 16), bg="gray")
+prompt02.grid(row=48, column=6)
+
+prompt03 = Label(top, text="Country/State-(NY)                            ", font=("Times New Roman", 16), bg="gray")
+prompt03.grid(row=54, column=6)
+
+prompt04 = Label(top, text="Zoom-(12)                                          ", font=("Times New Roman", 16),
+                 bg="gray")
+prompt04.grid(row=60, column=6)
+
+prompt05 = Label(top, text="Icon-(red)                                            ", font=("Times New Roman", 16),
+                 bg="gray")
+prompt05.grid(row=66, column=6)
+
+prompt06 = Label(top, text="Don't know country postal code?       ", font=("Times New Roman", 16), bg="gray")
+prompt06.grid(row=72, column=6)
+
+prompt07 = Label(top, text="Don't know state postal code?            ", font=("Times New Roman", 16), bg="gray")
+prompt07.grid(row=78, column=6)
+
+
+def execute():
+    name = E1.get()
+    state = E2.get()
+    zoom = E3.get()
+    icon = E4.get()
+    url = "http://open.mapquestapi.com/staticmap/v4/getplacemap?key=cd7M5w9ra7qOTgj43jYjWIcDMCelTTtT&location=" + name + "," + state + "&size=1400,650&zoom=" + zoom + "&showicon=" + icon + "_1-1"
+    webbrowser.open(url)
+
+
+def execute2():
+    url2 = "https://en.wikipedia.org/wiki/List_of_postal_codes"
+    webbrowser.open(url2)
+
+
+def execute3():
+    url3 = "https://en.wikipedia.org/wiki/List_of_U.S._state_abbreviations"
+    webbrowser.open(url3)
+
+
+answer = Button(top, text="Click here for your map!", font=("Times New Roman", 16,), width=20, height=1, command=execute)
+answer.grid(row=36, column=6)
+
+answer2 = Button(top, text="Click here!", font=("Times New Roman", 16,), width=10, height=1, command=execute2)
+answer2.grid(row=72, column=12)
+
+answer3 = Button(top, text="Click here!", font=("Times New Roman", 16,), width=10, height=1, command=execute3)
+answer3.grid(row=78, column=12)
+
+top.mainloop()
